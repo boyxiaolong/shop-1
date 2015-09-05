@@ -1,0 +1,106 @@
+{% extends "store/base.html" %}
+{% load i18n %}
+{% load staticfiles %} 
+{% block content %}
+
+<!-- 	<section id="advertisement">
+		<div class="container">
+			<img src="images/shop/advertisement.jpg" alt="" />
+		</div>
+	</section> -->
+	
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="left-sidebar">
+					
+						{% include "store/category.html" %}
+
+						
+						
+					
+				</div>
+				
+				<div class="col-sm-9 padding-right">
+					<div class="features_items"><!--features_items-->
+						<h2 class="title text-center">Features Items</h2>
+<!-- 						<div class="col-sm-4">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+									<div class="productinfo text-center">
+										<img src="images/shop/product12.jpg" alt="" />
+										<h2>$56</h2>
+										<p>Easy Polo Black Edition</p>
+										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+									</div>
+									<div class="product-overlay">
+										<div class="overlay-content">
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
+									</div>
+								</div>
+								<div class="choose">
+									<ul class="nav nav-pills nav-justified">
+										<li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+										<li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
+									</ul>
+								</div>
+							</div>
+						</div> -->
+						{% for product in products %}
+
+
+							<div class="col-sm-3">
+								<div class="single-products">
+										<div class="productinfo text-center">
+										{% if product.is_on_sale = True %}
+											<div class="rotate_min_sale"><p class="rotate_p">SALE</p></div>
+										{% elif product.is_new = True %}
+											<div class="rotate_min_new"><p class="rotate_p">NEW</p></div>
+										{% endif %}
+											<a href="{% url 'details' product.id %}" onclick=""><img src="/{{product.get_thumbnail_150}}" id="image_{{ product.id }}"
+                                                      
+                                                      alt="{{ product.name }}"
+                                                      title="{{ product.name }}"/></a>
+											<h2>&#8364;{{ product.price|floatformat:2 }}</h2>
+											<p>{{ product.name }}</p>
+
+											<a id="zz3{{product.id}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
+								</div>
+							</div>
+							{% empty %}
+							{% endfor %}
+<ul class="pagination">
+    
+        {% if products.has_previous %}
+		<li>
+            <a href="?page={{ products.previous_page_number }}">&laquo;</a>
+		</li>
+        {% endif %}
+	
+
+        <li class="active">
+           <a>Page {{ products.number }} of {{ products.paginator.num_pages }}</a>
+        </li>
+
+        {% if products.has_next %}
+		<li>
+            <a href="?page={{ products.next_page_number }}">&raquo;</a>
+		</li>
+    {% endif %}
+    
+</ul>
+						
+
+					</div><!--features_items-->
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+{% endblock %}
+  

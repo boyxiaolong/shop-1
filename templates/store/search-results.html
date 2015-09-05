@@ -1,0 +1,51 @@
+{% extends "store/base.html" %}
+{% load i18n %}
+{% load staticfiles %} 
+{% block content %}
+
+
+	<section>
+		<div class="container">
+			<div class="row">
+				{% include "store/category.html" %}
+				
+				
+{% if query %}
+<p>You searched for: <strong>{{ query }}</strong></p>
+{% endif %}
+{% if products %}
+					<div class="features_items"><!--features_items-->
+						{% if cat %}
+						<h2 class="title text-center">{{cat}}</h2>
+						{% else %}
+						<h2 class="title text-center">{% trans "Search results" %}</h2>
+						{% endif %}
+						<div class="product-image-wrapper">
+						{% for product in products %}
+							{% include "store/product-list.html" %}
+							{% empty %}
+							{% endfor %}
+						</div>
+					</div><!--features_items-->
+{% else %}
+    <p>No products matched your search criteria.</p>
+{% endif %}
+{% include "store/recommended.html"%}
+				</div>
+			</div>
+		</div>
+	</section>
+
+<!-- {% if products %}
+    <p>Found {{ products|length }} product{{ products|pluralize }}.</p>
+    <ul>
+        {% for product in products %}
+        <li>{{ product.name }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No products matched your search criteria.</p>
+{% endif %} -->
+
+{% endblock %}
+  

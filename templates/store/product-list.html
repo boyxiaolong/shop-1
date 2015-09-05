@@ -1,0 +1,50 @@
+
+{% load staticfiles %} 
+{% load thumbnail %}
+											<script>
+												//var url = window.location.href;
+												//document.write(url);
+												//----------------------------------------------------------------------------
+												// url function---------------------------------------------------------------
+												//----------------------------------------------------------------------------
+												function get_url(url, id)		
+												{
+													return "http://127.0.0.1:8000/ru/" + url + "/" + id + "/";
+												}
+											</script>
+							<div class="col-sm-3">
+								<div class="single-products">
+										<div class="productinfo text-center">
+												
+												<!-- <img src="/{{product.image.url}}" id="image_{{ product.id }}"
+                                                      
+                                                      alt="{{ product.name }}"
+                                                      title="{{ product.name }}"/>  -->
+											{% if product.is_on_sale = True %}
+											<div class="rotate_min_sale"><p class="rotate_p">SALE</p></div>
+											{% elif product.is_new = True %}
+											<div class="rotate_min_new"><p class="rotate_p">NEW</p></div>
+											{% endif %}
+											<a href="{% url 'details' product.id %}" onclick=""><img src="/{{product.get_thumbnail_150}}" id="image_{{ product.id }}"
+                                                      
+                                                      alt="{{ product.name }}"
+                                                      title="{{ product.name }}"/></a>
+											
+											
+											
+											
+											
+											<h2>&#8364;{{ product.price|floatformat:2 }}</h2>
+											<p>{{ product.name }}</p>
+
+											<a id="zzz{{product.id}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										</div>
+										<!-- <div class="product-overlay">
+											<div class="overlay-content">
+												<h2>&#8364;{{ product.price|floatformat:2 }}</h2>
+												<p>{{ product.name }}</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											</div>
+										</div> -->
+								</div>
+							</div>

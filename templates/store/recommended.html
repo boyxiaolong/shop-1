@@ -1,0 +1,67 @@
+{% load i18n %}
+{% load staticfiles %} 
+					<div class="recommended_items"><!--recommended_items-->
+						<h2 class="title text-center">{% trans "recommended items" %}</h2>
+						
+						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+							<div class="carousel-inner">
+								<div class="item active">	
+									{% for product in product_list_recommended|slice:":4" %}
+									<div class="col-sm-3">
+										<div class="single-products">
+												<div class="productinfo text-center">
+{% if product.is_on_sale = True %}
+											<div class="rotate_min_sale"><p class="rotate_p">SALE</p></div>
+											{% elif product.is_new = True %}
+											<div class="rotate_min_new"><p class="rotate_p">NEW</p></div>
+											{% endif %}
+													<a href="{% url 'details' product.id %}" onclick=""><img src="/{{product.get_thumbnail_150}}" id="image_{{ product.id }}"
+															  
+															  alt="{{ product.name }}"
+															  title="{{ product.name }}"/></a>
+													<h2>&#8364;{{ product.price|floatformat:2 }}</h2>
+													<p>{{ product.name }}</p>
+
+													<a id="zz1{{product.id}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												</div>
+										</div>
+									</div>
+									{% empty %}
+									{% endfor %}
+
+
+								</div>
+								<div class="item">	
+									{% for product in product_list_recommended %}
+									
+									<div class="col-sm-3">
+										<div class="single-products">
+												<div class="productinfo text-center">
+{% if product.is_on_sale = True %}
+											<div class="rotate_min_sale"><p class="rotate_p">SALE</p></div>
+											{% elif product.is_new = True %}
+											<div class="rotate_min_new"><p class="rotate_p">NEW</p></div>
+											{% endif %}
+													<a href="{% url 'details' product.id %}" onclick=""><img src="/{{product.get_thumbnail_150}}" id="image_{{ product.id }}"
+															  
+															  alt="{{ product.name }}"
+															  title="{{ product.name }}"/></a>
+													<h2>&#8364;{{ product.price|floatformat:2 }}</h2>
+													<p>{{ product.name }}</p>
+
+													<a id="zz2{{product.id}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												</div>
+										</div>
+									</div>
+									{% empty %}
+									{% endfor %}
+								</div>
+							</div>
+							 <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+								<i class="fa fa-angle-left"></i>
+							  </a>
+							  <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+								<i class="fa fa-angle-right"></i>
+							  </a>			
+						</div>
+					</div><!--/recommended_items-->

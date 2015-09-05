@@ -1,0 +1,98 @@
+{% extends "store/base.html" %}
+{% load i18n %}
+{% load staticfiles %} 
+{% block content %}
+
+
+
+	<section  ><!--form-->
+<div class="row3">
+	<div class="container">
+		<h1>New User <span>Signup!</span></h1>
+		<div class="row">
+
+				
+				<div class="signup-form"><!--sign up form-->
+				<form action="http://127.0.0.1:8000/ru/accounts/sign_up" method="post">{% csrf_token %}
+					<div class="col-sm-4">
+						<h2>Personal details</h2>
+ 							<input class="inp" type="email"  placeholder="*Email Address" name="email" required/>
+							<input class="inp" type="password"  placeholder="*Password" name="password1" id="password1" required/>
+							<input class="inp" type="password"  placeholder="*Re-type Password" name="password2" id="password2"  required/> 
+							<button type="submit" value="register" class="btn btn-default">Signup</button>
+							<script type="text/javascript">
+							window.onload = function () {
+								document.getElementById("password1").onchange = validatePassword;
+								document.getElementById("password2").onchange = validatePassword;
+								if($('.chk').is(":checked"))
+									$(".inp2").attr('required', '');
+								else 
+									$(".inp2").removeAttr('required');
+							}
+							function validatePassword(){
+							var pass2=document.getElementById("password2").value;
+							var pass1=document.getElementById("password1").value;
+							if(pass1!=pass2)
+								document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+							else
+								document.getElementById("password2").setCustomValidity('');  
+							//empty string means no validation error
+							}
+							</script>
+					</div>
+				
+					<!--/sign up form-->
+				
+						<div class="col-sm-4">
+						
+							<h2>Address details(optional)</h2><input  type="checkbox" class="chk"  name="chk" id="chk" onchange="valueChanged()" checked/>
+							<script type="text/javascript">
+								function valueChanged()
+								{
+									if($('.chk').is(":checked"))   
+										{$(".opt").show();
+										$(".inp2").attr('required', '')}
+										
+									else
+										{$(".opt").hide();
+										$(".inp2").removeAttr('required')}
+								}
+							</script>
+							<div class="opt" id="opt" name="opt">
+							<input class="inp2" type="text"   placeholder="First Name"  name="firstName" />
+							<input class="inp2" type="text"   placeholder="Second Name"  name="secondName"/>
+
+							<input class="inp2" type="number" placeholder="Postal code" name="postal_code" />
+
+							</div>
+							
+							
+						
+						</div>
+						<div class="col-sm-4">
+							<h2>&nbsp;</h2>
+							<div class="opt" id="opt" name="opt">
+
+ 							<input class="inp2" type="text" placeholder="Country" name="country" />
+
+							<input class="inp2" type="text" placeholder="City" name="city" />
+							<input class="inp2" type="text" placeholder="Address" name="address" /> 
+							</div>
+							
+							
+						
+						</div>
+				</form>
+				</div>
+						
+						
+		</div>
+				
+					
+		
+	</div>
+</div>
+	</section><!--/form-->
+
+{% endblock %}
+  

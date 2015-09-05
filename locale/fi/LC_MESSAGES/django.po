@@ -1,0 +1,43 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-08 16:34+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\templates\store\base.html:64
+msgid "Welcome,"
+msgstr "Joku suomen sana"
+
+#: .\templates\store\base.html:102
+msgid "Natural"
+msgstr "Luonto"
+
+#: .\templates\store\base.html:102
+msgid " guide"
+msgstr " opas"
+
+#: .\templates\store\index.html:84
+msgid "Features Items"
+msgstr "Joku suomen sana"
+
+#: .\templates\store\index.html:216
+msgid "recommended items"
+msgstr "suositettu tuoteet"
+
+#: .\templates\store\search-results.html:18
+msgid "Search results"
+msgstr "Haku tulot"
