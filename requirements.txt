@@ -1,4 +1,4 @@
-carton==0.2.3
+carton
 dj-database-url==0.3.0
 Django==1.8.4
 django-analytics==0.0.1
