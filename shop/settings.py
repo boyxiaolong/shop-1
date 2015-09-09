@@ -46,7 +46,7 @@ INSTALLED_APPS = (
 
 )
 
-#carton
+# carton
 CART_PRODUCT_MODEL = 'store.models.Product'
 
 MIDDLEWARE_CLASSES = (
