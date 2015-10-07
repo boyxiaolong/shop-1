@@ -187,42 +187,42 @@ def logout(request):
 
 def register_user(request):
     if request.method == 'POST':
-        firstName=request.POST.get('firstName',False)
-        secondName=request.POST.get('secondName',False)
-        email=request.POST.get('email',False)
-        password=request.POST.get('password1',False)
-        country=request.POST.get('country',False)
-        postal_code=request.POST.get('postal_code',False)
-        city=request.POST.get('city',False)
-        address=request.POST.get('address',False)
+        firstName = request.POST.get('firstName',False)
+        secondName = request.POST.get('secondName',False)
+        email = request.POST.get('email',False)
+        password = request.POST.get('password1',False)
+        country = request.POST.get('country', False)
+        postal_code = request.POST.get('postal_code', False)
+        city = request.POST.get('city', False)
+        address = request.POST.get('address', False)
 
-        if User.objects.filter(username__iexact=email).exists() == False:
+        if not User.objects.filter(username__iexact=email).exists():
 
             if email and password and country and postal_code and city and address and firstName and secondName:
     ##            user = User.objects.create_user(username1,email,password)
                 a = User.objects.create_user(email,email,password)
-                a.first_name=firstName
-                a.last_name=secondName
+                a.first_name = firstName
+                a.last_name = secondName
                 a.save()
                 user = Address()
-                user.user=a
-                user.country=country
-                user.city=city
-                user.postal_code=postal_code
-                user.address=address
+                user.user = a
+                user.country = country
+                user.city = city
+                user.postal_code = postal_code
+                user.address = address
                 user.save()
-                message="You are successfuly registered"
+                message = "You are successfuly registered"
                 return HttpResponse(message)
             elif email and password:
-                a = User.objects.create_user(email,email,password)
+                a = User.objects.create_user(email, email, password)
                 a.save()
-                message="You are successfuly registered"
+                message = "You are successfuly registered"
                 return HttpResponse(message)
             else:
-                message="denied"
+                message = "denied"
                 return HttpResponse(message)
         else:
-            message="your email is already in use"
+            message = "your email is already in use"
             return HttpResponse(message)
 
     args = {}

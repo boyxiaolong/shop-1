@@ -31,9 +31,6 @@
             $.ajax({
                 url: urll,
                 type: "get",
-				
-
-
                 success: function(data) {
 					console.log(urll);
                 },
@@ -64,9 +61,7 @@
 					price *= 100;
 					total = price * quantity_.value;
 					console.log(total + " " + price + " " + total/100);
-					
 					document.getElementById(id3).innerHTML = total/100;
-					
 					console.log(urll + " " + price + " " + data + " ");
                 },
                 error: function(data) { 
@@ -79,7 +74,6 @@
         $(".cart_quantity_down").click(function() {
 			console.log({{item.product.id}})
 			console.log(this.id);
-
 			var idd = this.id.substring(3);						// getting rid of first three characters to get product.id
 			var urll = "{% url 'remove_single' %}" + idd + "/";		
 			

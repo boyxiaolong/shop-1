@@ -15,7 +15,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 
 import os.path
-Temp_path=os.path.realpath('.')
+Temp_path = os.path.realpath('.')
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
