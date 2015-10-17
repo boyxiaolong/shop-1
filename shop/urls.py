@@ -39,7 +39,7 @@ urlpatterns += i18n_patterns('',
     #auth urls
 ##    url(r'^accounts/login$', views.login),
 
-    url(r'^accounts/auth/$', views.auth_view),
+    url(r'^accounts/auth/$', views.auth_view, name='auth'),
     url(r'^accounts/logout$', views.logout),
     url(r'^accounts/sign_up$', views.register_user),
 

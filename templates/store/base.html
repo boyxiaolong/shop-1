@@ -6,50 +6,49 @@
 {% get_cart as cart %}
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>{{site_title}}</title>
-    <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
-    <link href="{% static "bootstrap/css/font-awesome.min.css" %}" rel="stylesheet">
-    <link href="{% static "bootstrap/css/prettyPhoto.css" %}" rel="stylesheet">
-    <link href="{% static "bootstrap/css/price-range.css" %}" rel="stylesheet">
-    <link href="{% static "bootstrap/css/animate.css" %}" rel="stylesheet">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>{{site_title}}</title>
+	<link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+	<link href="{% static "bootstrap/css/font-awesome.min.css" %}" rel="stylesheet">
+	<link href="{% static "bootstrap/css/prettyPhoto.css" %}" rel="stylesheet">
+	<link href="{% static "bootstrap/css/price-range.css" %}" rel="stylesheet">
+	<link href="{% static "bootstrap/css/animate.css" %}" rel="stylesheet">
 	<link href="{% static "bootstrap/css/main.css" %}" rel="stylesheet">
 	<link href="{% static "bootstrap/css/responsive.css" %}" rel="stylesheet">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript">	
+
+	<script type="text/javascript">	
 	$(function() {
-        $(".add-to-cart").click(function() {
+		$(".add-to-cart").click(function() {
 			console.log({{product.id}})
 			console.log(this.id);
-
 			var idd = this.id;
 			var urll = "{% url 'add' %}" + idd.substring(3) + "/";		// getting rid of first three characters to get product.id
-			
-            $.ajax({
-                url: urll,
-                type: "get",
-                success: function(data) {
+			$.ajax({
+				url: urll,
+				type: "get",
+				success: function(data) {
 					console.log(urll);
-                },
-                error: function(data) { 
-                    alert("Got an error dude");
-                }
-            });
-        })
-    })
+				},
+				error: function(data) { 
+					alert("Got an error dude");
+				}
+			});
+		})
+	})
 	
 	$(function() {
-        $(".cart_quantity_up").click($.func1=function() {
+		$(".cart_quantity_up").click($.func1=function() {
 			var idd = this.id.substring(3);
 			var urll = "{% url 'add' %}" + idd + "/";		// getting rid of first three characters to get product.id
 			
-           $.ajax({
-                url: urll,
-                type: "get",
-                success: function(data) {
+		   $.ajax({
+				url: urll,
+				type: "get",
+				success: function(data) {
 					var id2 = "quantity" + idd;	// these 3 lines: increasing the value shown between "+" and "-"
 					var id3 = "total" + idd;	// total price
 					//var id4 = "price" + idd;	// price per 1 product
@@ -63,24 +62,23 @@
 					console.log(total + " " + price + " " + total/100);
 					document.getElementById(id3).innerHTML = total/100;
 					console.log(urll + " " + price + " " + data + " ");
-                },
-                error: function(data) { 
-                    alert("Got an error dude");
-                }
-            });
-        })
-    })
+				},
+				error: function(data) { 
+					alert("Got an error dude");
+				}
+			});
+		})
+	})
 	$(function() {
-        $(".cart_quantity_down").click(function() {
+		$(".cart_quantity_down").click(function() {
 			console.log({{item.product.id}})
 			console.log(this.id);
 			var idd = this.id.substring(3);						// getting rid of first three characters to get product.id
 			var urll = "{% url 'remove_single' %}" + idd + "/";		
-			
-            $.ajax({
-                url: urll,
-                type: "get",
-                success: function(data) {
+			$.ajax({
+				url: urll,
+				type: "get",
+				success: function(data) {
 					var id2 = "quantity" + idd;	// these 3 lines: decreasing the value shown between "+" and "-"
 					var id3 = "total" + idd;	// total price
 					//var id4 = "price" + idd;	// price per 1 product
@@ -101,22 +99,22 @@
 						var stroka = "#item" + idd;				// delete row (if there's less than 1 item in a cart)
 						$(stroka).remove();
 					}
-                },
-                error: function(data) { 
-                    alert("Got an error dude");
-                }
-            });
-        })
-    })
+				},
+				error: function(data) { 
+					alert("Got an error dude");
+				}
+			});
+		})
+	})
 
 	
 </script>	
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->       
-    
-    <link rel="apple-touch-icon" sizes="57x57" href="{% static "bootstrap/favicon/apple-icon-57x57.png" %}">
+	<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->       
+	
+	<link rel="apple-touch-icon" sizes="57x57" href="{% static "bootstrap/favicon/apple-icon-57x57.png" %}">
 	<link rel="apple-touch-icon" sizes="60x60" href="{% static "bootstrap/favicon/apple-icon-60x60.png" %}">
 	<link rel="apple-touch-icon" sizes="72x72" href="{% static "bootstrap/favicon/apple-icon-72x72.png" %}">
 	<link rel="apple-touch-icon" sizes="76x76" href="{% static "bootstrap/favicon/apple-icon-76x76.png" %}">
@@ -152,7 +150,7 @@
 						</div>
 
 					</div>
-  					<div class="col-sm-8">
+					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							{% block rew %}
 								<ul class="nav">
@@ -216,18 +214,18 @@
 								</ul>
 								</div></li>
 								<form action="{% url 'setlang' %}" method="post">{% csrf_token %}
-    <input name="next" type="hidden" value={{ request.get_full_path|slice:'3:' }} />
-    <select name="language">
-        {% get_current_language as LANGUAGE_CODE %}
-        {% get_available_languages as LANGUAGES %}
-        {% get_language_info_list for LANGUAGES as languages %}
-        {% for language in languages %}
-            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
-                {{ language.name_local }} ({{ language.code }})
-            </option>
-        {% endfor %}
-    </select>
-    <input type="submit" value="Go" />
+	<input name="next" type="hidden" value={{ request.get_full_path|slice:'3:' }} />
+	<select name="language">
+		{% get_current_language as LANGUAGE_CODE %}
+		{% get_available_languages as LANGUAGES %}
+		{% get_language_info_list for LANGUAGES as languages %}
+		{% for language in languages %}
+			<option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
+				{{ language.name_local }} ({{ language.code }})
+			</option>
+		{% endfor %}
+	</select>
+	<input type="submit" value="Go" />
 </form>
 								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
 
@@ -236,15 +234,15 @@
 <div class="sh_cart">
 <a href="http://127.0.0.1:8000/ru/cart/showcart"><div><i class="fa cart_icon fa-shopping-cart"></i></div></a>
 <div class="widget">
-      <div class="widget_title">
-        <div class="sp1">Items</div>
-        <div class="sp2">Amount</div>
-      </div>
-      <div class="sp3">{{cart.count}}</div>
-      <div class="sp4">€{{cart.total}}</div>
-      <button onclick="location.href='http://127.0.0.1:8000/ru/cart/showcart'">View Cart</button>
-      <button onclick="location.href='http://127.0.0.1:8000/ru/cart/checkout'">Checkout</button>
-    </div>
+	  <div class="widget_title">
+		<div class="sp1">Items</div>
+		<div class="sp2">Amount</div>
+	  </div>
+	  <div class="sp3">{{cart.count}}</div>
+	  <div class="sp4">€{{cart.total}}</div>
+	  <button onclick="location.href='http://127.0.0.1:8000/ru/cart/showcart'">View Cart</button>
+	  <button onclick="location.href='http://127.0.0.1:8000/ru/cart/checkout'">Checkout</button>
+	</div>
 </div>
 								</li>
 
@@ -275,20 +273,20 @@
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="/" class="active">Home</a></li>
 								<li class="dropdown"><a href="/shop/all">Shop<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="/shop/all">Products</a></li>
+									<ul role="menu" class="sub-menu">
+										<li><a href="/shop/all">Products</a></li>
 										<!-- <li><a href="/shop/7">Product Details</a></li>  -->
 										<li><a href="/checkout/proceed">Checkout</a></li> 
 										<li><a href="/cart/showcart">Cart</a></li> 
 										<li><a href="/login/login">Login</a></li> 
-                                    </ul>
-                                </li> 
+									</ul>
+								</li> 
 								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="blog.html">Blog List</a></li>
+									<ul role="menu" class="sub-menu">
+										<li><a href="blog.html">Blog List</a></li>
 										<li><a href="blog-single.html">Blog Single</a></li>
-                                    </ul>
-                                </li> 
+									</ul>
+								</li> 
 								<li><a href="/about">About</a></li>
 								<li><a href="/contact">Contact</a></li>
 							</ul>
@@ -421,11 +419,11 @@
 	
 </footer><!--/Footer-->
 
-    <script src="{% static "bootstrap/js/jquery.js" %}"></script>
+	<script src="{% static "bootstrap/js/jquery.js" %}"></script>
 	<script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
 	<script src="{% static "bootstrap/js/jquery.scrollUp.min.js" %}"></script>
 	<script src="{% static "bootstrap/js/price-range.js" %}"></script>
-    <script src="{% static "bootstrap/js/jquery.prettyPhoto.js" %}"></script>
-    <script src="{% static "bootstrap/js/main.js" %}"></script>
+	<script src="{% static "bootstrap/js/jquery.prettyPhoto.js" %}"></script>
+	<script src="{% static "bootstrap/js/main.js" %}"></script>
 </body>
 </html>
