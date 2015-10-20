@@ -309,11 +309,11 @@
 							<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
  -->						
 
-							<form action="http://127.0.0.1:8000/ru/shop/search/" method="post" id="f2" name="f2">
+							<form action="{% url 'search' %}" method="post" id="f2" name="f2">
 								{% csrf_token %}
 								<script>
 									fr2=document.getElementById("f2");
-									fr2.action="http://127.0.0.1:8000/ru/shop/search/";
+									fr2.action="{% url 'search' %}";
 									
 								</script>
 								<div class="box">

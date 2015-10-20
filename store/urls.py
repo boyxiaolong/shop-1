@@ -16,7 +16,7 @@ urlpatterns = [
     url(r'^remove_single/(?P<id>[0-9]+)/$', views.remove_single, name='remove_single'),
     url(r'^remove_single/$', views.remove_single, name='remove_single'),# needed (without arguments) to use in ajax-function
     url(r'^search-results/$', views.search_results),
-    url(r'^search/$', views.search),
+    url(r'^search/$', views.search, name='search'),
     url(r'^categories/(?P<cat>.+)/$', views.categories, name='categories'),
     url(r'^brands/(?P<br>.+)/$', views.brands, name='brands'),
 #   url(r'^auth/$', views.auth_view),

@@ -115,7 +115,7 @@ def search(request):
         q = request.POST['q']
         products = models.Product.objects.filter(name__icontains=q)
         return render(request, 'store/search-results.html',
-            {'products': products, 'query': q,'product_list_recommended': models.Product.objects.filter(is_recommended=True)})
+            {'products': products, 'query': q, 'product_list_recommended': models.Product.objects.filter(is_recommended=True)})
     else:
         message = 'You submitted an empty form.'
     return HttpResponse(message)
