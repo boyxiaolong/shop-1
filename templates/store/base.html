@@ -156,26 +156,27 @@
 								<ul class="nav">
 								{% if user.is_authenticated %}
 								<li class="login-li"><p>{% trans "Welcome," %}&nbsp;{{request.session.welcome}}</p></li>
-								<li class="login-li"><button class="auth_but" type="button" onclick="location.href='http://127.0.0.1:8000/ru/accounts/logout'">Logout</a></li>
+								<li class="login-li"><button class="auth_but" type="button" onclick="location.href='{% url 'logout' %}'">Logout</a></li>
 								{% else %}
 							
-								<form action="accounts/auth/" method="post" id="formid" name="formid">
+								<form action="{% url 'auth' %}" method="post" id="formid" name="formid">
 								<script>
 								frm=document.getElementById("formid");
-								frm.action="http://127.0.0.1:8000/ru/accounts/auth/";
+								frm.action="{% url 'auth' %}";
 								</script>
 								{% csrf_token %}
 								<li class="login-li"><p style="color:red">{{request.session.error}}</p></li>
 								<li class="login-li"><input class="auth_reg" type="text" name="username" id="username" placeholder="username"/></li>
 								<li class="login-li"><input class="auth_reg" type="password" name="password" id="password" placeholder="password"/></li>
 								<li class="login-li"><button class="auth_but" type="submit" value="login" >Login</button></li>
-								<li class="login-li"><button class="auth_but" type="button" onclick="location.href='http://127.0.0.1:8000/ru/accounts/sign_up'" name="" >Sign up</button></li>
+								<li class="login-li"><button class="auth_but" type="button" onclick="location.href='{% url 'signup' %}'" name="" >Sign up</button></li>
 								</form>
 
 								
 								{% endif %}
-								{% endblock %}
 								</ul>
+							{% endblock %}
+								
 						</div> 
 					</div> 
 				</div>

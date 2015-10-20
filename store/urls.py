@@ -20,5 +20,8 @@ urlpatterns = [
     url(r'^categories/(?P<cat>.+)/$', views.categories, name='categories'),
     url(r'^brands/(?P<br>.+)/$', views.brands, name='brands'),
 #   url(r'^auth/$', views.auth_view),
+    url(r'^auth/$', views.auth_view, name='auth'),
+    url(r'^logout/$', views.logout, name='logout'),
+    url(r'^sign_up$', views.register_user, name='signup'),
 #   url(r'^products/$', views.shop, name='shop'),                                # for testing purposes only
 ]
