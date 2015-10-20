@@ -233,7 +233,7 @@
 								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li> <!-- <a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a>  -->
 <div class="sh_cart">
-<a href="http://127.0.0.1:8000/ru/cart/showcart"><div><i class="fa cart_icon fa-shopping-cart"></i></div></a>
+<a href="{% url 'showcart' %}"><div><i class="fa cart_icon fa-shopping-cart"></i></div></a>
 <div class="widget">
 	  <div class="widget_title">
 		<div class="sp1">Items</div>
@@ -241,8 +241,8 @@
 	  </div>
 	  <div class="sp3">{{cart.count}}</div>
 	  <div class="sp4">€{{cart.total}}</div>
-	  <button onclick="location.href='http://127.0.0.1:8000/ru/cart/showcart'">View Cart</button>
-	  <button onclick="location.href='http://127.0.0.1:8000/ru/cart/checkout'">Checkout</button>
+	  <button onclick="location.href='{% url 'showcart' %}'">View Cart</button>
+	  <button onclick="location.href='{% url 'checkout' %}'">Checkout</button>
 	</div>
 </div>
 								</li>
@@ -275,10 +275,10 @@
 								<li><a href="/" class="active">Home</a></li>
 								<li class="dropdown"><a href="/shop/all">Shop<i class="fa fa-angle-down"></i></a>
 									<ul role="menu" class="sub-menu">
-										<li><a href="/shop/all">Products</a></li>
+										<li><a href="{% url 'shop' %}">Products</a></li>
 										<!-- <li><a href="/shop/7">Product Details</a></li>  -->
-										<li><a href="/checkout/proceed">Checkout</a></li> 
-										<li><a href="/cart/showcart">Cart</a></li> 
+										<li><a href="{% url 'checkout' %}">Checkout</a></li> 
+										<li><a href="{% url 'showcart' %}">Cart</a></li> 
 										<li><a href="/login/login">Login</a></li> 
 									</ul>
 								</li> 

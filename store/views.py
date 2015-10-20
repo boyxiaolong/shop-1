@@ -187,10 +187,10 @@ def logout(request):
 
 def register_user(request):
     if request.method == 'POST':
-        firstName = request.POST.get('firstName',False)
-        secondName = request.POST.get('secondName',False)
-        email = request.POST.get('email',False)
-        password = request.POST.get('password1',False)
+        firstName = request.POST.get('firstName', False)
+        secondName = request.POST.get('secondName', False)
+        email = request.POST.get('email', False)
+        password = request.POST.get('password1', False)
         country = request.POST.get('country', False)
         postal_code = request.POST.get('postal_code', False)
         city = request.POST.get('city', False)
@@ -230,4 +230,4 @@ def register_user(request):
 
 ##    args['form'] = MyRegistrationForm()
 
-    return render(request,'store/login.html', args)
+    return render(request, 'store/login.html', args)
