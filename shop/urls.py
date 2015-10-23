@@ -28,9 +28,10 @@ urlpatterns += i18n_patterns('',
 
     url(r'^product/', include('store.urls')),
     url(r'^$', include('store.urls')),
-    url(r'^shop/', include('store.urls')),
+    url(r'^accounts/', include('store.urls')),
     url(r'^checkout/', include('store.urls')),
     url(r'^cart/', include('store.urls')),
+    url(r'^shop/', include('store.urls')),
  ##   url(r'^accounts/',include('store.urls')),
 ##    url(r'^login/',include('store.urls')),
     url(r'^admin/', include(admin.site.urls)),
@@ -39,7 +40,7 @@ urlpatterns += i18n_patterns('',
     #auth urls
 ##    url(r'^accounts/login$', views.login),
 
-    url(r'^accounts/', include('store.urls')),
+    
     #url(r'^accounts/auth/$', views.auth_view, name='auth'),
     #url(r'^accounts/logout$', views.logout),
     #url(r'^accounts/sign_up$', views.register_user, name='signup'),

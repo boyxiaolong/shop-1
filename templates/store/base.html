@@ -205,29 +205,43 @@
 							<ul class="nav navbar-nav">
 								<li><div class="btn-group">
 								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									FI
-									<span class="caret"></span>
+								FI								
+								<span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu">
-									<li><a href="#">FI</a></li>
-									<li><a href="#">EN</a></li>
-									<li><a href="#">RU</a></li>
+									<li><a href="#" onclick="Mysubmitform('fi');">FI</a></li>
+									<li><a href="#" onclick="Mysubmitform('en');">EN</a></li>
+									<li><a href="#" onclick="Mysubmitform('ru');">RU</a></li>
 								</ul>
 								</div></li>
-								<form action="{% url 'setlang' %}" method="post">{% csrf_token %}
-	<input name="next" type="hidden" value={{ request.get_full_path|slice:'3:' }} />
-	<select name="language">
-		{% get_current_language as LANGUAGE_CODE %}
-		{% get_available_languages as LANGUAGES %}
-		{% get_language_info_list for LANGUAGES as languages %}
-		{% for language in languages %}
-			<option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
-				{{ language.name_local }} ({{ language.code }})
-			</option>
-		{% endfor %}
-	</select>
-	<input type="submit" value="Go" />
-</form>
+
+								
+
+								<script type="text/javascript">
+								function Mysubmitform(lang)
+								{
+								  
+								  document.getElementById('language8').value = lang;
+								  //alert(document.getElementById('language8').value);
+								  document.myform8.submit();
+								}
+								</script>
+
+
+								<form type = "hidden" name="myform8" action="{% url 'setlang' %}" method="post">{% csrf_token %}
+									<input name="next" type="hidden" value={{ request.get_full_path|slice:'3:' }} />
+									<select id="language8" name="language">
+										{% get_current_language as LANGUAGE_CODE %}
+										{% get_available_languages as LANGUAGES %}
+										{% get_language_info_list for LANGUAGES as languages %}
+										{% for language in languages %}
+										<option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
+												{{ language.name_local }} ({{ language.code }})
+										</option>
+										{% endfor %}
+									</select>
+									<input type="submit" value="Go" />
+								</form>
 								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
 
 								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
