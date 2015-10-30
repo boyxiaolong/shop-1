@@ -205,7 +205,8 @@
 							<ul class="nav navbar-nav">
 								<li><div class="btn-group">
 								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-								FI								
+								{% get_current_language as LANGUAGE_CODE %}
+								<span id="lang_name">{{ LANGUAGE_CODE }}</span>								
 								<span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu">
@@ -222,6 +223,8 @@
 								{
 								  
 								  document.getElementById('language8').value = lang;
+								  document.getElementById('lang_name').innerHTML = lang;
+								  document.getElementById('language8').style.display = 'none'; // temrorary solution - hide the previous lang form
 								  //alert(document.getElementById('language8').value);
 								  document.myform8.submit();
 								}
@@ -230,7 +233,7 @@
 
 								<form type = "hidden" name="myform8" action="{% url 'setlang' %}" method="post">{% csrf_token %}
 									<input name="next" type="hidden" value={{ request.get_full_path|slice:'3:' }} />
-									<select id="language8" name="language">
+									<select  style="display:none" id="language8" name="language">
 										{% get_current_language as LANGUAGE_CODE %}
 										{% get_available_languages as LANGUAGES %}
 										{% get_language_info_list for LANGUAGES as languages %}
@@ -240,7 +243,6 @@
 										</option>
 										{% endfor %}
 									</select>
-									<input type="submit" value="Go" />
 								</form>
 								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
 
