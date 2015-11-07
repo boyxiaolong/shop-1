@@ -103,7 +103,6 @@ import dj_database_url
 DATABASES['default'] =  dj_database_url.config()
 
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
