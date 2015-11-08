@@ -25,7 +25,7 @@
 											{% elif product.is_new = True %}
 											<div class="rotate_min_new"><p class="rotate_p">NEW</p></div>
 											{% endif %}
-											<a href="{% url 'details' product.id %}" onclick=""><img src="/{{product.get_thumbnail_150}}" id="image_{{ product.id }}"
+											<a href="{% url 'details' product.id %}" onclick=""><img src="http://res.cloudinary.com/naturalguide/image/upload/v1447011693/{{product.image}}" id="image_{{ product.id }}"
                                                       
                                                       alt="{{ product.name }}"
                                                       title="{{ product.name }}"/></a>
