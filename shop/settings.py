@@ -29,6 +29,14 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+#CLOUDINARY_URL=cloudinary://826168134721721:N0iSxb9e4wDvL9X58tucXdCMecE@naturalguide
+
+CLOUDINARY = {
+  'cloud_name': 'naturalguide',  
+  'api_key': '826168134721721',  
+  'api_secret': 'N0iSxb9e4wDvL9X58tucXdCMecE',  
+}
+
 
 # Application definition
 
@@ -42,6 +50,7 @@ INSTALLED_APPS = (
     'store',
     'sorl.thumbnail',
     'carton',
+    'cloudinary',
    ## 'debug_toolbar',
 
 )

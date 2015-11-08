@@ -3,6 +3,7 @@ from django.core.urlresolvers import reverse
 from sorl.thumbnail.shortcuts import get_thumbnail
 #registration
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Product(models.Model):
@@ -10,7 +11,7 @@ class Product(models.Model):
    name = models.CharField(max_length=200)
    price = models.FloatField()
    brand = models.CharField(max_length=100, default="Verana")
-   image = models.ImageField(upload_to='static/bootstrap/itempics')
+  # image = models.ImageField(upload_to='static/bootstrap/itempics')
    is_active = models.BooleanField(default=True)
    details = models.CharField(max_length=250, default="-")
    times_clicked = models.IntegerField(default=0)
@@ -23,45 +24,44 @@ class Product(models.Model):
    code=models.CharField(max_length=50, default="000000")
    ingredients = models.CharField(max_length=200, default="-")
    tags = models.CharField(max_length=200, default="-")
-
-
+   image = CloudinaryField(blank=True, null=True)
 
 
    def __str__(self):
-        return self.name
+		return self.name
 
    def get_thumbnail(self, size):
-        img = self.image
-        return unicode(get_thumbnail(img, '%(size)ix%(size)i' % {'size': size,}).url)
+		img = self.image
+		return unicode(get_thumbnail(img, '%(size)ix%(size)i' % {'size': size,}).url)
 
    def get_thumbnail_38(self):
-        return self.get_thumbnail(38)
+		return self.get_thumbnail(38)
 
    def get_thumbnail_64(self):
-        return self.get_thumbnail(64)
+		return self.get_thumbnail(64)
 
    def get_thumbnail_150(self):
-        return self.get_thumbnail(150)
+		return self.get_thumbnail(150)
 
    def get_thumbnail_250(self):
-        return self.get_thumbnail(250)
+		return self.get_thumbnail(250)
 
    def get_thumbnail_350(self):
-        return self.get_thumbnail(350)
+		return self.get_thumbnail(350)
 
    def get_thumbnail_html(self):
-        img_resize_url = self.get_thumbnail(100)
-        html = '<a class="image-picker" href="%s"><img src="%s" alt="%s"/></a>'
-        return html % (self.image.url, img_resize_url, self.title)
+		img_resize_url = self.get_thumbnail(100)
+		html = '<a class="image-picker" href="%s"><img src="%s" alt="%s"/></a>'
+		return html % (self.image.url, img_resize_url, self.title)
 
 #reg
 class Address(models.Model):
-    user=models.OneToOneField(User)
-    country=models.CharField(max_length=50)
-    postal_code=models.CharField(max_length=20)
-    city=models.CharField(max_length=50)
-    address=models.CharField(max_length=100)
+	user=models.OneToOneField(User)
+	country=models.CharField(max_length=50)
+	postal_code=models.CharField(max_length=20)
+	city=models.CharField(max_length=50)
+	address=models.CharField(max_length=100)
 
 
-    def __str__(self):
-        return self.user.username
+	def __str__(self):
+		return self.user.username

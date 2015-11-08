@@ -1,5 +1,7 @@
 {% load i18n %}
 {% load staticfiles %} 
+{% load cloudinary %} 
+
 					<div class="recommended_items"><!--recommended_items-->
 						<h2 class="title text-center">{% trans "recommended items" %}</h2>
 						
@@ -15,7 +17,7 @@
 											{% elif product.is_new = True %}
 											<div class="rotate_min_new"><p class="rotate_p">NEW</p></div>
 											{% endif %}
-													<a href="{% url 'details' product.id %}" onclick=""><img src="/{{product.get_thumbnail_150}}" id="image_{{ product.id }}"
+													<a href="{% url 'details' product.id %}" onclick=""><img src="http://res.cloudinary.com/naturalguide/image/upload/v1447011693/{{product.image}}" id="image_{{ product.id }}"
 															  
 															  alt="{{ product.name }}"
 															  title="{{ product.name }}"/></a>
@@ -37,12 +39,14 @@
 									<div class="col-sm-3">
 										<div class="single-products">
 												<div class="productinfo text-center">
+
+
 {% if product.is_on_sale = True %}
 											<div class="rotate_min_sale"><p class="rotate_p">SALE</p></div>
 											{% elif product.is_new = True %}
 											<div class="rotate_min_new"><p class="rotate_p">NEW</p></div>
 											{% endif %}
-													<a href="{% url 'details' product.id %}" onclick=""><img src="/{{product.get_thumbnail_150}}" id="image_{{ product.id }}"
+													<a href="{% url 'details' product.id %}" onclick=""><img src="{{product.image}}" id="image_{{ product.id }}"
 															  
 															  alt="{{ product.name }}"
 															  title="{{ product.name }}"/></a>
