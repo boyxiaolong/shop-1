@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load staticfiles %} 
 {% block content %}
-
+{% load cloudinary %}
 
 
 	<section>
@@ -20,10 +20,11 @@
 							{% elif product.is_new = True %}
 							<div class="rotate_new"><p class="rotate_p">NEW</p></div>
 							{% endif %}
-								<img src="/{{product.get_thumbnail_250}}" id="image_{{ product.id }}"
+								<!--<img src="http://res.cloudinary.com/naturalguide/image/upload/v1447011693/{{product.image}}" id="image_{{ product.id }}"
                                                       
                                                       alt="{{ product.name }}"
-                                                      title="{{ product.name }}"/></a>
+                                                      title="{{ product.name }}"/></a>-->
+                                                      {% cloudinary product.image sample %}
 								
 							</div>
 <!--						<div id="similar-product" class="carousel slide" data-ride="carousel">
