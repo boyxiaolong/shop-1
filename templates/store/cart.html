@@ -4,6 +4,7 @@
 {% block content %}
 {% load carton_tags %}
 {% get_cart as cart %}
+{% load cloudinary %}
 
 	<section id="cart_items">
 		<div class="container">
@@ -29,10 +30,10 @@
 						{% for item in cart.items %}
 						<tr id="item{{item.product.id}}">
 							<td class="cart_product">
-								<a href="{% url 'details' item.product.id %}"><img src="/{{item.product.get_thumbnail_150}}" id="image_{{ item.product.id }}"
-                                                      
-                                                      alt="{{ product.name }}"
-                                                      title="{{ product.name }}"/>></a>
+								<a href="{% url 'details' item.product.id %}">
+                                	{% cloudinary item.product.image width=150 height=150 crop="fit" %}
+                                </a>
+
 							</td>
 							<td class="cart_description">
 								<h4><a href="">    {{ item.product.name }}</a></h4>

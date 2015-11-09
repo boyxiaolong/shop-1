@@ -17,10 +17,13 @@
 											{% elif product.is_new = True %}
 											<div class="rotate_min_new"><p class="rotate_p">NEW</p></div>
 											{% endif %}
-													<a href="{% url 'details' product.id %}" onclick=""><img src="http://res.cloudinary.com/naturalguide/image/upload/v1447011693/{{product.image}}" id="image_{{ product.id }}"
+													<a href="{% url 'details' product.id %}" onclick="">
+														<!--<img src="http://res.cloudinary.com/naturalguide/image/upload/v1447011693/{{product.image}}" id="image_{{ product.id }}"
 															  
 															  alt="{{ product.name }}"
-															  title="{{ product.name }}"/></a>
+															  title="{{ product.name }}"/>-->
+														{% cloudinary product.image width=150 height=150 crop="fit" %}
+													</a>
 													<h2>&#8364;{{ product.price|floatformat:2 }}</h2>
 													<p>{{ product.name }}</p>
 
@@ -46,10 +49,13 @@
 											{% elif product.is_new = True %}
 											<div class="rotate_min_new"><p class="rotate_p">NEW</p></div>
 											{% endif %}
-													<a href="{% url 'details' product.id %}" onclick=""><img src="http://res.cloudinary.com/naturalguide/image/upload/v1447011693/{{product.image}}" id="image_{{ product.id }}"
+													<a href="{% url 'details' product.id %}" onclick="">
+														<!--<img src="http://res.cloudinary.com/naturalguide/image/upload/v1447011693/{{product.image}}" id="image_{{ product.id }}"
 															  
 															  alt="{{ product.name }}"
-															  title="{{ product.name }}"/></a>
+															  title="{{ product.name }}"/>-->
+														{% cloudinary product.image width=150 height=150 crop="fit" %}
+													</a>
 													<h2>&#8364;{{ product.price|floatformat:2 }}</h2>
 													<p>{{ product.name }}</p>
 
