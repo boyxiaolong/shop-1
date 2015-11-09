@@ -15,12 +15,12 @@
 						<div class="col-sm-5">
 						
 							<div class="view-product">
-							{% if product.is_on_sale = True %}
-							<div class="rotate"><p class="rotate_p">SALE</p></div>
-							{% elif product.is_new = True %}
-							<div class="rotate_new"><p class="rotate_p">NEW</p></div>
-							{% endif %}
-								<!--<img src="http://res.cloudinary.com/naturalguide/image/upload/v1447011693/{{product.image}}" id="image_{{ product.id }}"
+								{% if product.is_on_sale = True %}
+								<div class="rotate"><p class="rotate_p">SALE</p></div>
+								{% elif product.is_new = True %}
+								<div class="rotate_new"><p class="rotate_p">NEW</p></div>
+								{% endif %}
+									<!--<img src="http://res.cloudinary.com/naturalguide/image/upload/v1447011693/{{product.image}}" id="image_{{ product.id }}"
                                                       
                                                       alt="{{ product.name }}"
                                                       title="{{ product.name }}"/></a>-->

@@ -22,16 +22,22 @@
 
 	<script type="text/javascript">	
 	$(function() {
-		$(".add-to-cart").click(function() {
+		$(".add-to-cart").click(function() {		// this is happening when "Add to cart" button (on index and shop pages) is clicked
 			console.log({{product.id}})
 			console.log(this.id);
 			var idd = this.id;
+			var cart_items = parseInt(document.getElementById("cart_count").innerHTML);
+			var carttotal = parseFloat(document.getElementById("cart_total").innerHTML);
+			document.getElementById("cart_count").innerHTML = ++cart_items;				// add by one the number of items in the cart on the fly
 			var urll = "{% url 'add' %}" + idd.substring(3) + "/";		// getting rid of first three characters to get product.id
 			$.ajax({
 				url: urll,
 				type: "get",
 				success: function(data) {
-					console.log(urll);
+					var price = parseFloat(data);
+					price += carttotal; 
+					document.getElementById("cart_total").innerHTML = price;	
+					console.log(urll + price + carttotal);
 				},
 				error: function(data) { 
 					alert("Got an error dude");
@@ -206,7 +212,7 @@
 								<li><div class="btn-group">
 								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
 								{% get_current_language as LANGUAGE_CODE %}
-								<span id="lang_name">{{ LANGUAGE_CODE }}</span>								
+								<span id="lang_name">{{ LANGUAGE_CODE.upper }}</span>								
 								<span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu">
@@ -255,8 +261,8 @@
 		<div class="sp1">Items</div>
 		<div class="sp2">Amount</div>
 	  </div>
-	  <div class="sp3">{{cart.count}}</div>
-	  <div class="sp4">€{{cart.total}}</div>
+	  <div class="sp3" id="cart_count">{{cart.count}}</div>
+	  <div class="sp4" id="cart_total">{{cart.total}}€</div>
 	  <button onclick="location.href='{% url 'showcart' %}'">View Cart</button>
 	  <button onclick="location.href='{% url 'checkout' %}'">Checkout</button>
 	</div>
