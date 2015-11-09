@@ -57,7 +57,7 @@ def index(request):
 
 def details(request, id):
     product =get_object_or_404(models.Product, pk=id)
-    return render(request, 'store/product-details.html',{'product':product,'product_list_recommended':models.Product.objects.filter(is_recommended=True)})
+    return render(request, 'store/product-details.html',{'product':product, 'product_list_recommended':models.Product.objects.filter(is_recommended=True), 'site_title':"Details | Natural Guide"})
 
 def contact_us(request):
      context = {
@@ -85,7 +85,10 @@ def checkout(request):
     return render(request, 'store/checkout.html', context)
 
 def showcart(request):
-    return render(request, 'store/cart.html')
+    context = {
+        'site_title':"Your cart | Natural Guide"
+    }
+    return render(request, 'store/cart.html', context)
 
 
 
@@ -121,17 +124,24 @@ def search(request):
     return HttpResponse(message)
 
 def categories(request, cat):
-    products = models.Product.objects.filter(category__iexact=cat)  ##__iexact helps to ignore case sensitivity, e.g. Body=body, Verana=verana
-    return render(request, 'store/search-results.html',
-            {'products': products,
-            'product_list_recommended': models.Product.objects.filter(is_recommended=True),
-            'cat':cat})
+    products = models.Product.objects.filter(category__iexact=cat)  #__iexact helps to ignore case sensitivity, e.g. Body=body, Verana=verana
+    context = {
+        'site_title': 'Natural Guide | ' + cat.capitalize(),        #Category name starts with the capital letter - cat.capitalize()
+        'products': products,
+        'product_list_recommended': models.Product.objects.filter(is_recommended=True),
+        'cat': cat
+    }  
+    return render(request, 'store/search-results.html', context)
+
 def brands(request, br):
-    products = models.Product.objects.filter(brand__iexact=br)  ##__iexact helps to ignore case sensitivity, e.g. Body=body, Verana=verana
-    return render(request, 'store/search-results.html',
-            {'products': products,
-            'product_list_recommended': models.Product.objects.filter(is_recommended=True),
-            'cat':br})
+    products = models.Product.objects.filter(brand__iexact=br)  #__iexact helps to ignore case sensitivity, e.g. Body=body, Verana=verana
+    context = {
+        'site_title': 'Brands: ' + br.capitalize(),             #Brend name starts with the capital letter - br.capitalize()
+        'products': products,
+        'product_list_recommended': models.Product.objects.filter(is_recommended=True),
+        'cat': br
+    }  
+    return render(request, 'store/search-results.html', context)
 
 def search_results(request):
     if 'q' in request.GET:
