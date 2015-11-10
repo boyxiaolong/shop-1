@@ -164,7 +164,7 @@
 								<ul class="nav">
 								{% if user.is_authenticated %}
 								<li class="login-li"><p>{% trans "Welcome," %}&nbsp;{{request.session.welcome}}</p></li>
-								<li class="login-li"><button class="auth_but" type="button" onclick="location.href='{% url 'logout' %}'">Logout</a></li>
+								<li class="login-li"><button class="auth_but" type="button" onclick="location.href='{% url 'logout' %}'">Logout</button></li>
 								{% else %}
 							
 								<form action="{% url 'auth' %}" method="post" id="formid" name="formid">
