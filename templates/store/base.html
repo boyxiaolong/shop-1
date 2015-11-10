@@ -38,6 +38,8 @@
 					price += carttotal; 
 					document.getElementById("cart_total").innerHTML = price;	
 					console.log(urll + price + carttotal);
+					document.getElementById("widget").style.display = "block";  // first show the cart 
+					$('#widget').delay(500).fadeOut();							// then hide it slowly
 				},
 				error: function(data) { 
 					alert("Got an error dude");
@@ -255,16 +257,18 @@
 								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li> <!-- <a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a>  -->
 <div class="sh_cart">
-<a href="{% url 'showcart' %}"><div><i class="fa cart_icon fa-shopping-cart"></i></div></a>
-<div class="widget">
-	  <div class="widget_title">
-		<div class="sp1">Items</div>
-		<div class="sp2">Amount</div>
-	  </div>
-	  <div class="sp3" id="cart_count">{{cart.count}}</div>
-	  <div class="sp4" id="cart_total">{{cart.total}}€</div>
-	  <button onclick="location.href='{% url 'showcart' %}'">View Cart</button>
-	  <button onclick="location.href='{% url 'checkout' %}'">Checkout</button>
+	<a href="{% url 'showcart' %}">
+		<div><i class="fa cart_icon fa-shopping-cart"></i></div>
+	</a>
+	<div class="widget" id="widget">
+		<div class="widget_title">
+			<div class="sp1">Items</div>
+			<div class="sp2">Amount</div>
+		</div>
+		<div class="sp3" id="cart_count">{{cart.count}}</div>
+		<div class="sp4" id="cart_total">{{cart.total}}€</div>
+		<button onclick="location.href='{% url 'showcart' %}'">View Cart</button>
+		<button onclick="location.href='{% url 'checkout' %}'">Checkout</button>
 	</div>
 </div>
 								</li>
