@@ -14,7 +14,7 @@
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 						
-							<div class="view-product">
+							<div class="view-product" style="background-color:grey;">	
 								{% if product.is_on_sale = True %}
 								<div class="rotate"><p class="rotate_p">SALE</p></div>
 								{% elif product.is_new = True %}
@@ -24,8 +24,7 @@
                                                       
                                                       alt="{{ product.name }}"
                                                       title="{{ product.name }}"/></a>-->
-                                                      {% cloudinary product.image sample %}
-                                                      {% cloudinary product.image width=250 height=250 crop="fit" %}
+                                {% cloudinary product.image width=280 crop="fit" %}                      
 								
 							</div>
 <!--						<div id="similar-product" class="carousel slide" data-ride="carousel">
