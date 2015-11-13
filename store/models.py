@@ -19,9 +19,9 @@ class Product(models.Model):
    is_popular = models.BooleanField(default=False)
    is_on_sale = models.BooleanField(default=False)
    is_new = models.BooleanField(default=False)
-   volume=models.FloatField(default=0)
-   weight=models.FloatField(default=0)
-   code=models.CharField(max_length=50, default="000000")
+   volume = models.FloatField(default=0)
+   weight= models.FloatField(default=0)
+   code = models.CharField(max_length=50, default="000000")
    ingredients = models.CharField(max_length=200, default="-")
    tags = models.CharField(max_length=200, default="-")
    image = CloudinaryField(blank=True, null=True)
@@ -62,6 +62,16 @@ class Address(models.Model):
 	city=models.CharField(max_length=50)
 	address=models.CharField(max_length=100)
 
-
 	def __str__(self):
 		return self.user.username
+
+class Review(models.Model):
+   product = models.ForeignKey(Product)
+   review_text = models.CharField(max_length=1000, default="")
+   author = models.CharField(max_length=30, default="Anonymous")
+   email = models.CharField(max_length=30, default="")
+   is_shown = models.BooleanField(default=True)
+   publication_date = models.DateTimeField('date published')
+
+   def __str__(self):
+      return self.author
