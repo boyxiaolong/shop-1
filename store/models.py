@@ -67,11 +67,11 @@ class Address(models.Model):
 
 class Review(models.Model):
    product = models.ForeignKey(Product)
+   user = models.ForeignKey(User, null=True)
    review_text = models.CharField(max_length=1000, default="")
-   author = models.CharField(max_length=30, default="Anonymous")
-   email = models.CharField(max_length=30, default="")
+   #author = models.CharField(max_length=30, default="Anonymous")
    is_shown = models.BooleanField(default=True)
-   publication_date = models.DateTimeField('date published')
+   date_published = models.DateTimeField('date published')
 
    def __str__(self):
-      return self.author
+      return self.review_text

@@ -57,7 +57,8 @@ def index(request):
 
 def details(request, id):
 	product =get_object_or_404(models.Product, pk=id)
-	return render(request, 'store/product-details.html',{'product':product, 'product_list_recommended':models.Product.objects.filter(is_recommended=True), 'site_title':"Details | Natural Guide"})
+	cur_user = request.user
+	return render(request, 'store/product-details.html',{'product':product, 'cur_user':cur_user, 'product_list_recommended':models.Product.objects.filter(is_recommended=True), 'site_title':"Details | Natural Guide"})
 
 def contact_us(request):
 	context = {

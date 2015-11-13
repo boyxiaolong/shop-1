@@ -122,9 +122,9 @@
 								<div class="col-sm-12">
 									{% for review in product.review_set.all %}
 										<ul>
-											<li><a href=""><i class="fa fa-user"></i>{{ review.author }}</a></li>
-											<li><a href=""><i class="fa fa-calendar-o"></i>{{ review.publication_date|date:"g:i" }}</a></li>
-											<li><a href=""><i class="fa fa-clock-o"></i>{{ review.publication_date|date:"d M Y" }}</a></li>
+											<li><a href=""><i class="fa fa-user"></i>{{ review.product }}</a></li>
+											<li><a href=""><i class="fa fa-calendar-o"></i>{{ review.date_published|date:"g:i" }}</a></li>
+											<li><a href=""><i class="fa fa-clock-o"></i>{{ review.date_published|date:"d M Y" }}</a></li>
 										</ul>
 										<p>{{ review.review_text }}</p>
 										<br /><br />
@@ -134,8 +134,8 @@
 									
 									<form action="#">
 										<span>
-											<input type="text" placeholder="Your Name"/>
-											<input type="email" placeholder="Email Address"/>
+											<input type="text" placeholder="Your Name"/ value="{{ cur_user.first_name }}" />
+											<input type="email" placeholder="Email Address" value="{{ cur_user.email }}" />
 										</span>
 										<textarea name="" ></textarea>
 										
