@@ -1,30 +1,43 @@
 from django.http import HttpResponse, HttpResponseRedirect#, JsonResponse
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render, get_object_or_404################, redirect - TO DO: later try redirect - it redirects to view!!!
 from django.template import RequestContext, loader
 from store import models
 from carton.cart import Cart
-from django.utils import translation
+from django.utils import translation, timezone
 #auth
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.contrib import auth
 from django.core.context_processors import csrf
 from django.contrib.auth.forms import UserCreationForm
-from forms import MyRegistrationForm
+from forms import MyRegistrationForm, ReviewForm
 from django.contrib.auth.models import User
 from store.models import Address
+from django.core.urlresolvers import reverse # needed for add_review
 #from django.utils.translation import ugettext as _
-
 #pagination
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
-
 #import json
-
-# Create your views here.
-
-
 #pagination
+
+def add_review(request, id):
+	product = get_object_or_404(models.Product, pk=id)
+	form = ReviewForm(request.POST)
+	if form.is_valid():
+		review_text = form.cleaned_data['review_text']
+		review = form.save(commit=False)
+		review.review_text = review_text
+		review.user = request.user
+		review.product = product
+		review.date_published = timezone.now()
+		review.save()
+		return  HttpResponseRedirect(reverse('details', args=(product.id,)))
+	else:
+		form = ReviewForm()
+	return render(request, 'store/product-details.html', {'product': product, 'form': form})
+
+	
+	return render(request, 'store/')
 def shop(request):
 	product_list = models.Product.objects.all()
 	paginator = Paginator(product_list, 16) # Show 16 contacts per page

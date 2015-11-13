@@ -24,4 +24,5 @@ urlpatterns = [
     url(r'^logout/$', views.logout, name='logout'),
     url(r'^sign_up$', views.register_user, name='signup'),
 #   url(r'^products/$', views.shop, name='shop'),                                # for testing purposes only
+    url(r'^(?P<id>[0-9]+)/add_review/$', views.add_review, name='add_review'),
 ]
