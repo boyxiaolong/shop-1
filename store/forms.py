@@ -4,15 +4,15 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Review
 
 class MyRegistrationForm(UserCreationForm):
-    email=forms.EmailField(required=True)
-    country=forms.CharField(required=True)
-    postal_code=forms.CharField(required=True)
-    city=forms.CharField(required=True)
-    address=forms.CharField(required=True)
+    email = forms.EmailField(required=True)
+    country = forms.CharField(required=True)
+    postal_code = forms.CharField(required=True)
+    city = forms.CharField(required=True)
+    address = forms.CharField(required=True)
 
     class Meta:
         model = User
-        fields = ('username', 'email','password1', 'password2','country','postal_code','city','address')
+        fields = ('username', 'email', 'password1', 'password2', 'country', 'postal_code', 'city', 'address')
 
     def save(self, commit=True):
         user = super(MyRegistrationForm, self).save(commit=False)
@@ -24,7 +24,6 @@ class MyRegistrationForm(UserCreationForm):
 
         if commit:
             user.save()
-
         return user
 
 class ReviewForm(forms.ModelForm):
