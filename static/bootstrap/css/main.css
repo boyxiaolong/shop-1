@@ -930,12 +930,15 @@ h2.title {
 	border:1px solid #F7F7F5;
 	overflow: hidden;
 	margin-bottom:30px;
-	
 }
 
 .single-products {
   position: relative;
 }
+/*.product-cont {
+  border: 1px solid lightgrey;
+  background-color: black;
+}*/
 
 .new, .sale {
   position: absolute;
@@ -966,6 +969,7 @@ h2.title {
 
 .productinfo img{
   width: 100%;
+  border: 1px solid lightgrey;
 }
 
 .productinfo{
