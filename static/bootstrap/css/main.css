@@ -8,7 +8,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background: ;
+    background: #F0F0E9; /*white!!!!!!!!!!!!!!!!!!!!!!!*/
   position: relative;
   font-weight:400px;
 }
@@ -243,19 +243,19 @@ a#scrollUp i{
 }
 
 .usa:hover {
-	background:#8DC63F;
-	color:#fff;
-	border-color:#8DC63F;
+	/*background:#8DC63F;*/
+	color:#8DC63F;
+/*	border-color:*/
 }
 
 .usa:active, .usa.active {
-  background: none repeat scroll 0 0 #8DC63F;
+/*  background: none repeat scroll 0 0 #8DC63F;*/
   box-shadow: inherit;
   outline: 0 none;
 }
 
 .btn-group.open .dropdown-toggle {
-  background: rgba(0, 0, 0, 0);
+/*  background: rgba(0, 0, 0, 0);*/
   box-shadow: none;
 }
 
@@ -280,6 +280,7 @@ a#scrollUp i{
 
 .shop-menu ul li a {
   background: #FFFFFF;
+    background-color: #F0F0E9;
   color: #696763;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
@@ -767,6 +768,7 @@ ul.sub-menu {
 	content: " ";
 	position: absolute;
 	background: #fff;
+    background-color: #F0F0E9;
 	bottom: -6px;
 	width: 130px;
 	height: 30px;
@@ -779,6 +781,7 @@ h2.title:before{
 	content: " ";
 	position: absolute;
 	background: #fff;
+    background-color: #F0F0E9;
 	bottom: -6px;
 	width: 220px;
 	height: 30px;
@@ -797,6 +800,7 @@ h2.title:before{
 
 .category-products .panel-default .panel-heading {
   background-color: #FFFFFF;
+    background-color: #F0F0E9;
   border: 0 none;
   color: #FFFFFF;
   padding: 5px 20px;
@@ -816,6 +820,7 @@ h2.title:before{
 
 .category-products .badge {
   background:none;
+    background-color: #F0F0E9;
   border-radius: 10px;
   color: #696763;
   display: inline-block;
@@ -850,6 +855,7 @@ h2.title:before{
 
 .brands-name .nav-stacked li a {
   background-color: #FFFFFF;
+    background-color: #F0F0E9;
   color: #696763;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
@@ -860,11 +866,13 @@ h2.title:before{
 
 .brands-name .nav-stacked li a:hover{
   background-color: #fff;
+    background-color: #F0F0E9;
   color: #696763;
 }
 
 .shipping {
   background-color: #F2F2F2;
+    background-color: #F0F0E9;
   margin-top: 40px;
   overflow: hidden;
   padding-top: 20px;
@@ -878,6 +886,7 @@ h2.title:before{
 
 .well {
   background-color: #FFFFFF;
+    background-color: #F0F0E9;
   border: 1px solid #F7F7F0;
   border-radius: 4px;
   box-shadow: none;
@@ -889,6 +898,7 @@ h2.title:before{
 
 .tooltip-inner {
   background-color: #8DC63F;
+    background-color: #F0F0E9;
   border-radius: 4px;
   color: #FFFFFF;
   max-width: 200px;
