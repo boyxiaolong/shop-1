@@ -18,8 +18,23 @@
 </div>
 <script type="text/javascript">
 	var doc = new jsPDF();	// global
-	
+	doc.setFontSize(18);
+	doc.text(12, 20, "Wonder Masters Oy");
+	doc.text(182, 20, "Lasku");
+	doc.setLineWidth(0.3);
+	doc.line(10, 27, 200, 27);
+	doc.setFontSize(12);
+	doc.text(12, 45, "Viitenumero"); doc.text(48, 45, "5 11011 78920");
+	doc.text(12, 55, "Tilausumeronne"); doc.text(48, 55, "3 46911 78881");
+	doc.text(135, 45, "Laskun numero"); doc.text(170, 45, "5110117842");
+	doc.text(135, 55, "Y-tunnus"); doc.text(170, 55, "2589923-5");
+	doc.text(12, 65, "Saaja"); doc.text(48, 65, "Wonder Masters Oy");
+	doc.text(135, 65, "Eräpäivä");doc.text(170, 65, "30.04.2016");
 
+	doc.text(12, 85, "Tilinumero");doc.text(48, 85,"Tilinumero: Nordea FI32 1369 3000 1231 48 NDEAFIHH");
+	doc.line(10, 135, 200, 135);
+	doc.setFontType("bold");
+	doc.text(135, 145, "YHTEENSÄ:");doc.text(180, 145,"33,00 EUR");
 	var string = doc.output('bloburi');
 	
 	$('.preview-pane').attr('src', string);
