@@ -1575,7 +1575,7 @@ h2.title {
   width: 100%;
 } */
 .inp{
-  background: #F0F0E9;
+  background: white;    /*del !!!!!!!!!!!!!!! */
   border: medium none;
   color: #696763;
   display: block;
@@ -1589,7 +1589,7 @@ h2.title {
   width: 100%;
 }
 .inp2{
-  background: #F0F0E9;
+  background: white;    /*del !!!!!!!!!!!!!!! */
   border: medium none;
   color: #696763;
   display: block;
@@ -1615,7 +1615,9 @@ border: medium none;
 
 .auth_reg {
   background: #fff;
+    background: #F0F0E9; /*white!!!!!!!!!!!!!!!!!!!!!!!*/ /*white!!!!!!!!!!!!!!!!!!!!!!!*/
   border: medium none;
+    border: 1px solid lightgrey;
   color: #696763;
   display: block;
   font-family: 'Roboto', sans-serif;
@@ -1874,7 +1876,8 @@ border: medium none;
 
 
 .cart_delete a {
-  background:#F0F0E9;
+  /*background:#F0F0E9;*/       /*del    background: #F0F0E9;*/
+    background-color: lightgrey;
   color: #FFFFFF;
   padding: 5px 7px;
   font-size: 16px

@@ -97,6 +97,12 @@ def checkout(request):
         }
     return render(request, 'store/checkout.html', context)
 
+def bill(request):
+    context = {
+        'product_list': models.Product.objects.order_by('-category')[:10]
+        }
+    return render(request, 'store/bill.html', context)
+
 def showcart(request):
     context = {
         'site_title':"Your cart | Natural Guide"

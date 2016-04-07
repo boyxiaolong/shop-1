@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'^(?P<id>[0-9]+)$', views.details, name='details'),
     url(r'^all$', views.shop, name='shop'),
     url(r'^proceed$', views.checkout, name='checkout'),
+    url(r'^bill$', views.bill, name='bill'),
     url(r'^showcart$', views.showcart, name='showcart'),
 #   url(r'^login$', viwes.login, name='login'),
     url(r'^add/(?P<id>[0-9]+)/$', views.add, name='add'), # !!!! careful with "/$" !!!!!

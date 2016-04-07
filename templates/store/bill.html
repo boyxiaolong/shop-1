@@ -4,7 +4,7 @@
 {% load cloudinary %} 
 {% block content %}
 
-	<section id="cart_items">
+	<section id="bill">
 		<div class="container">
 			<div class="breadcrumbs">
 				<ol class="breadcrumb">
@@ -12,6 +12,19 @@
 				  <li class="active">Check out</li>
 				</ol>
 			</div><!--/breadcrums-->
+<div class="span6" style="float: left">
+					<iframe class="preview-pane" type="application/pdf" width="350px" height="600px" 
+					frameborder="0" style="position:relative;z-index:999"></iframe>
+</div>
+<script type="text/javascript">
+	var doc = new jsPDF();	// global
+	
+
+	var string = doc.output('bloburi');
+	
+	$('.preview-pane').attr('src', string);
+</script>
+
 
 			<div class="step-one">
 				<h2 class="heading">Step1</h2>
@@ -48,7 +61,7 @@
 								<input type="password" placeholder="Confirm password">
 							</form>
 							<a class="btn btn-primary" href="">Get Quotes</a>
-							<a class="btn btn-primary" href="{% url 'bill' %}">Continue</a>
+							<a class="btn btn-primary" href="">Continue</a>
 						</div>
 					</div>
 					<div class="col-sm-5 clearfix">
@@ -84,7 +97,6 @@
 									<input type="password" placeholder="Confirm password">
 									<input type="text" placeholder="Phone *">
 									<input type="text" placeholder="Mobile Phone">
-									
 									<!-- <input type="text" placeholder="Fax"> -->
 								</form>
 							</div>
