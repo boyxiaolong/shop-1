@@ -13,11 +13,62 @@
 				</ol>
 			</div><!--/breadcrums-->
 <div class="span6" style="float: left;margin-left: 200px;">
-					<iframe class="preview-pane" type="application/pdf" width="450px" height="750px" 
+					<iframe class="preview-pane" id="p1" type="application/pdf" width="450px" height="750px" 
 					frameborder="0" style="position:relative;z-index:999"></iframe>
 </div>
+<div class="span6" style="float: left;">
+					<iframe class="preview-pane" id="p2" type="application/pdf" width="450px" height="750px" 
+					frameborder="0" style="position:relative;z-index:999"></iframe>
+</div>
+	<script>
+/* my jsPDF functions */
+function savePDF() { doc.save('Test.pdf'); }
+
+var splitRegex = /\r\n|\r|\n/g;
+jsPDF.API.textEx = function (text, x, y, hAlign, vAlign) {
+    var fontSize = this.internal.getFontSize() / this.internal.scaleFactor;
+    // As defined in jsPDF source code
+    var lineHeightProportion = 1.15;
+    var splittedText = null;
+    var lineCount = 1;
+    if (vAlign === 'middle' || vAlign === 'bottom' || hAlign === 'center' || hAlign === 'right') {
+        splittedText = typeof text === 'string' ? text.split(splitRegex) : text;
+
+        lineCount = splittedText.length || 1;
+    }
+    // Align the top
+    y += fontSize * (2 - lineHeightProportion);
+
+    if (vAlign === 'middle')
+        y -= (lineCount / 2) * fontSize;
+    else if (vAlign === 'bottom')
+        y -= lineCount * fontSize;
+
+    if (hAlign === 'center' || hAlign === 'right') {
+        var alignSize = fontSize;
+        if (hAlign === 'center')
+            alignSize *= 0.5;
+        if (lineCount > 1) {
+            for (var iLine = 0; iLine < splittedText.length; iLine++) {
+                this.text(splittedText[iLine], x - this.getStringUnitWidth(splittedText[iLine]) * alignSize, y);
+                y += fontSize;
+            }
+            return this;
+        }
+        x -= this.getStringUnitWidth(text) * alignSize;
+    }
+    this.text(text, x, y);
+    return this;
+};
+	</script>
 <script type="text/javascript">
-	var doc = new jsPDF();	// global
+	var doc = new jsPDF();	
+	var x = 12;
+	var xx = 100;
+	var mx = 198;
+	var yy = 30;
+	var xxx = 45;
+	var interval= 10; 
 	doc.setFontSize(18);
 	doc.text(12, 20, "Wonder Masters Oy");
 	doc.text(182, 20, "Lasku");
@@ -31,13 +82,59 @@
 	doc.text(12, 65, "Saaja"); doc.text(48, 65, "Wonder Masters Oy");
 	doc.text(135, 65, "Eräpäivä");doc.text(170, 65, "30.04.2016");
 
-	doc.text(12, 85, "Tilinumero");doc.text(48, 85,"Tilinumero: Nordea FI32 1369 3000 1231 48 NDEAFIHH");
+	doc.text(12, 85, "Tilinumero");doc.text(48, 85,"Nordea FI32 1369 3000 1231 48");
+	doc.text(12, 95, "BIC");doc.text(48, 95,"NDEAFIHH");
 	doc.line(10, 135, 200, 135);
 	doc.setFontType("bold");
 	doc.text(135, 145, "YHTEENSÄ:");doc.text(180, 145,"33,00 EUR");
 	var string = doc.output('bloburi');
+	$('#p1').attr('src', string);
+	//$('.preview-pane').attr('src', string);
 	
-	$('.preview-pane').attr('src', string);
+
+	doc = new jsPDF();
+	doc.setFillColor(225,217,217);
+	doc.rect(mx-100, 30, 100, 90, 'F');
+	doc.textEx("Wonder Masters Oy", x, 17);
+	/*doc.text(132, 20, "Lasku");*/
+	doc.setFontType("bold");
+	doc.textEx("Lasku", 112, 17, "left");
+	doc.setFontType("normal");
+	doc.textEx("sivu 1/1", mx, 17, "right");
+	doc.setLineWidth(0.5);
+	doc.line(x, 27, mx, 27);
+	doc.textEx("Pekka Virtanen", x+20, 45, "left");
+	doc.textEx("Rälssintie 17 B 92", x+20, 55, "left");
+	doc.textEx("00720 Helsinki", x+20, 65, "left");
+
+	doc.textEx("Laskun päiväys:", xx, yy, "left");	doc.textEx("19.03.2016", xx+xxx, yy, "left"); yy+=interval;
+	doc.textEx("Laskun numero:", xx, yy, "left");doc.textEx("7266961", xx+xxx, yy, "left"); yy+=interval;
+	doc.textEx("Viitenumero:", xx, yy, "left"); doc.textEx("72669614", xx+xxx, yy, "left"); yy+=interval;
+	doc.textEx("Viitteenne:", xx, yy, "left"); doc.textEx("0316762", xx+xxx, yy, "left"); yy+=interval;
+	doc.textEx("Eräpäivä:", xx, yy, "left"); doc.textEx("30.04.2016", xx+xxx, yy, "left"); yy+=interval;
+	doc.textEx("Y-tunnus:", xx, yy, "left"); doc.textEx("2589923-5", xx+xxx, yy, "left"); yy+=interval;
+	doc.textEx("IBAN:", xx, yy, "left"); doc.setFontSize(12);doc.textEx("Nordea FI55 8911 550 48", xx+xxx, yy, "left"); yy+=interval;
+	doc.setFontSize(14);
+	doc.textEx("BIC:", xx, yy, "left"); doc.textEx("NDEAAIHH", xx+xxx, yy, "left"); yy+=interval;
+	doc.textEx("Puhelin:", xx, yy, "left"); doc.textEx("+358477360623", xx+xxx, yy, "left"); yy+=interval;
+ 	yy+=interval*3; 	doc.setFontType("bold");doc.setFontSize(12);
+ 	doc.textEx("Laskutettavat nimikkeet                    Määrä   Yks.hinta  Veroton   Alv-% Vero  Verollinen EUR", x, yy);
+ 	doc.setFontType("normal");
+ 	doc.textEx("                                                             1,00 kpl    36,00         36,00      0,00    0,00        36,00", x, yy+12);
+	doc.setLineWidth(0.2);
+	doc.line(x, yy+8, mx, yy+8);
+	yy+=100;
+	doc.setFillColor(225,217,217);
+
+	doc.rect(x, yy, mx-x, 25, 'F');
+	doc.setFontType("bold");doc.setFontSize(16);
+	doc.textEx("    Eräpäivä    Veroton hinta EUR      ALV EUR      Loppusumma EUR", x, yy+4);doc.setFontType("normal");
+	doc.textEx("   30.04.2016             36,00                      0,00                      36,00", x, yy+16);
+
+
+	string = doc.output('bloburi');
+	
+	$('#p2').attr('src', string);
 </script>
 
 
@@ -247,7 +344,7 @@
 		</div>
 	</section> <!--/#cart_items-->
 
-	
+
 
 	
 	
